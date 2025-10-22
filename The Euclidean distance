@@ -1,0 +1,7 @@
+import math
+x1=float(input("Enter first x1: "))
+y1=float(input("Enter first y1: "))
+x2=float(input("Enter first x2: "))
+y2=float(input("Enter first y2: "))
+distance=math.sqrt((x1-x2)**2+(y1-y2)**2)
+print(f "The distance between dots is {distance}")
