@@ -1,0 +1,3 @@
+seat=int(input("Enter the seat number: "))
+compartment=(seat-1)//4+1
+print(f'The compartment number in which the seat is located: {compartment}')
