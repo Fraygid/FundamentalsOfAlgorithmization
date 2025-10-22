@@ -1,0 +1,6 @@
+import math
+x_degrees=float(input("Enter degree of x : "))
+x_radians=math.radians(x_degrees)
+result=math.sin(x_radians)+math.cos(x_radians)+math.tan(x_radians)**2
+round_result=round(result,4)
+print(f'The value of the trigonometric expression: {round_result}')
