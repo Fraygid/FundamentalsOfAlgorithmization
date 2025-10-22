@@ -1,0 +1,6 @@
+n=int(input("Enter the number of students: "))
+k=int(input("Enter the number of mandarins: "))
+each_student=k//n
+remaining=k%n
+print(f'The remaining number of mandarins: {each_student}')
+print(f'Numbers of mandarins for each student: {remaining}')
