@@ -1,0 +1,9 @@
+def calculate_tax():
+    Tax_rate=0.13
+    annual_income=float(input("Enter the annual income: "))
+    tax_mount=annual_income*Tax_rate
+    net_income=annual_income-tax_mount
+    print(f'Annual income is {annual_income:.2f}$')
+    print(f'Tax amount is {tax_mount:.2f}$')
+    print(f'Net income is {net_income:.2f}$')
+calculate_tax()
