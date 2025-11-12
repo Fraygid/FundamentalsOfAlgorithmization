@@ -4,6 +4,7 @@ def atm():
         amount=int(input('Введите сумму для снятия(кратную 100): '))
         if amount%100 != 0:
             print('Ошибка: сумма должна быть кратна 100.')
+            quit()
         print(f'Запрошенная сумма {amount} руб.')
         print('Выдаваемые купюры: ')
         remaining_amount=amount
@@ -16,10 +17,8 @@ def atm():
         for denomination in DENOMINATION:
             if denomination in bills_count:
                 print(f'{denomination} руб.: {bills_count[denomination]} шт.')
-        if remaining_amount == 0:
+        if remaining_amount %100!=0:
             print('Сумма выдана полностью.')
-        else:
-            print(f'Остаток не выдан: {remaining_amount} руб.')
     except ValueError:
         print('Ошибка: пожалуйста, введите целое число.')
 atm()
