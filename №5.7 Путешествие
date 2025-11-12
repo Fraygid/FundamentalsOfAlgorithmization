@@ -2,7 +2,7 @@ def calculate_trip_cost():
     distance=int(input('Введите расстояние поездки в км: '))
     consumption=float(input('Введите расход топлива на 100 км(в литрах): '))
     fuel_price=float(input('Введите стомиость топлива за 1 литр: '))
-    fuel_needed=(distance / 10) * consumption
+    fuel_needed=(distance / 100) * consumption
     total_cost=fuel_needed*fuel_price
     print(f'Необходимое количество топлива: {fuel_needed:.2f}')
     print(f'Общая стоимость поездки: {total_cost:.2f} руб.')
