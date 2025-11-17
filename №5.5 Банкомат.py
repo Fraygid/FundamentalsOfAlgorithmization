@@ -17,7 +17,7 @@ def atm():
         for denomination in DENOMINATION:
             if denomination in bills_count:
                 print(f'{denomination} руб.: {bills_count[denomination]} шт.')
-        if remaining_amount %100!=0:
+        if remaining_amount % 100 !=0:
             print('Сумма выдана полностью.')
     except ValueError:
         print('Ошибка: пожалуйста, введите целое число.')
