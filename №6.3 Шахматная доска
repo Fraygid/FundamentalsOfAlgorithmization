@@ -8,6 +8,6 @@ colour1=(x1+y1) % 2
 colour2=(x2+y2) % 2
 
 if colour1==colour2:
-    print('Да')
+    print('Да, он сможет туда походить')
 else:
-    print('Нет')
+    print('Нет, он не сможет туда походить')
