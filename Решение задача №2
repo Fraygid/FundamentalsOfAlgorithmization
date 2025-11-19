@@ -4,7 +4,7 @@ b=float(input('Введите сторону b: '))
 c=float(input('Введите сторону c: '))
 
 if a+c>b and a+b>c and b+c>a:
-    if a == b == c:
+    if a==b==c:
         print('Треугольник является равносторонним')
     elif a==b or a==c or b==c:
         print('Треугольник является равнобедренным')
