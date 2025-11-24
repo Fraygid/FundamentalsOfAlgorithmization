@@ -1,3 +1,6 @@
+print('================================')
+print('=     СТАТУС ВАШЕГО ЗАКАЗА     =')
+print('================================')
 order_status=input('Введите состояние заказа(pending, processing, shipped, delivered, cancelled): ')
 
 match order_status:
