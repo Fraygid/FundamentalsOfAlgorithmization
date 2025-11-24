@@ -9,7 +9,6 @@ def cafe_menu():
     print("| 5  | Какао         | 90 рублей  |")
     print("=" * 35)
 
-    # Цены напитков
     prices = {
         1: 120,  #кофе
         2: 80,  #чай
@@ -53,8 +52,8 @@ def cafe_menu():
                 return
 
         try:
-            quantity = int(input("Введите количество порций: "))
-            if quantity <= 0:
+            amount = int(input("Введите количество порций: "))
+            if amount <= 0:
                 print("❌ Ошибка: количество должно быть положительным числом")
                 return
         except ValueError:
@@ -65,7 +64,7 @@ def cafe_menu():
         discount = 0
         if discount_input:
             try:
-                discount = float(discount_input)
+                discount = int(discount_input)
                 if discount < 0 or discount > 100:
                     print("❌ Ошибка: скидка должна быть от 0 до 100%")
                     return
@@ -74,13 +73,13 @@ def cafe_menu():
                 return
 
         price_per_unit = prices[drink_number]
-        total_without_discount = price_per_unit * quantity
+        total_without_discount = price_per_unit * amount
         discount_amount = total_without_discount * (discount / 100)
         final_total = total_without_discount - discount_amount
 
-        if quantity == 1:
+        if amount == 1:
             portion = "порция"
-        elif 2 <= quantity <= 4:
+        elif 2 <= amount <= 4:
             portion = "порции"
         else:
             portion = "порций"
@@ -90,12 +89,12 @@ def cafe_menu():
         print("=" * 30)
         print(f"Товар: {drink_choice}")
         print(f"Цена за порцию: {price_per_unit} рублей")
-        print(f"Количество: {quantity} {portion}")
+        print(f"Количество: {amount} {portion}")
         print(f"Сумма без скидки: {total_without_discount} рублей")
 
         if discount > 0:
             print(f"Скидка: {discount}%")
-            print(f"Сумма скидки: {discount_amount:.2f} рублей")
+            print(f"Сумма скидки: {discount_amount} рублей")
             print(f"Итоговая сумма: {final_total:.2f} рублей")
         else:
             print(f"Итоговая сумма: {final_total:.2f} рублей")
