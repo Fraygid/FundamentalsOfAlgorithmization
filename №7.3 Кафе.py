@@ -105,6 +105,4 @@ def cafe_menu():
 
     except Exception as error:
         print(f"❌ Произошла ошибка: {error}")
-
-if __name__ == "__main__":
-    cafe_menu()
+cafe_menu()
