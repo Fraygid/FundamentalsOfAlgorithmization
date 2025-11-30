@@ -1,108 +1,91 @@
-def cafe_menu():
-    print("=" * 35)
-    print("| №  | Напиток       | Цена       |")
-    print("=" * 35)
-    print("| 1  | Кофе          | 120 рублей |")
-    print("| 2  | Чай           | 80 рублей  |")
-    print("| 3  | Сок           | 100 рублей |")
-    print("| 4  | Вода          | 50 рублей  |")
-    print("| 5  | Какао         | 90 рублей  |")
-    print("=" * 35)
+coffee_price = 120
+tea_price = 80
+juice_price = 100
+water_price = 50
+lemonade_price = 90
 
-    prices = {
-        1: 120,  #кофе
-        2: 80,  #чай
-        3: 100,  #сок
-        4: 50,  #вода
-        5: 90  #какао
-    }
+print("Добро пожаловать в кафе!")
+print("Наше меню:")
+print("1 - Кофе - 120 рублей")
+print("2 - Чай - 80 рублей")
+print("3 - Сок - 100 рублей")
+print("4 - Вода - 50 рублей")
+print("5 - Лимонад - 90 рублей")
+print()
 
-    names = {
-        1: "Кофе",
-        2: "Чай",
-        3: "Сок",
-        4: "Вода",
-        5: "Какао"
-    }
 
-    try:
-        choice_input = input("Введите номер напитка (1-5) или название: ")
+drink_input = input("Введите номер напитка (1-5): ")
+quantity_input = input("Введите количество порций: ")
+discount_input = input("Введите код скидки (если нет, нажмите Enter): ")
 
-        drink_choice = None
-        drink_number = None
 
-        match choice_input:
-            case '1' | "кофе" | "Кофе":
-                drink_choice = "Кофе"
-                drink_number = 1
-            case '2' | "чай" | "Чай":
-                drink_choice = "Чай"
-                drink_number = 2
-            case '3' | "сок" | "Сок":
-                drink_choice = "Сок"
-                drink_number = 3
-            case '4' | "вода" | "Вода":
-                drink_choice = "Вода"
-                drink_number = 4
-            case '5' | "какао" | "Какао":
-                drink_choice = "Какао"
-                drink_number = 5
-            case _:
-                print("❌ Ошибка: напиток не найден в меню")
-                return
+if not drink_input.isdigit() or not quantity_input.isdigit():
+    print("Ошибка: номер напитка и количество должны быть числами")
+else:
+    drink_number = int(drink_input)
+    quantity = int(quantity_input)
 
-        try:
-            amount = int(input("Введите количество порций: "))
-            if amount <= 0:
-                print("❌ Ошибка: количество должно быть положительным числом")
-                return
-        except ValueError:
-            print("❌ Ошибка: введите целое число для количества порций")
-            return
 
-        discount_input = input("Введите размер скидки в % (или нажмите Enter для отсутствия скидки): ").strip()
-        discount = 0
-        if discount_input:
-            try:
-                discount = int(discount_input)
-                if discount < 0 or discount > 100:
-                    print("❌ Ошибка: скидка должна быть от 0 до 100%")
-                    return
-            except ValueError:
-                print("❌ Ошибка: введите число для скидки")
-                return
-
-        price_per_unit = prices[drink_number]
-        total_without_discount = price_per_unit * amount
-        discount_amount = total_without_discount * (discount / 100)
-        final_total = total_without_discount - discount_amount
-
-        if amount == 1:
-            portion = "порция"
-        elif 2 <= amount <= 4:
-            portion = "порции"
+    if drink_number < 1 or drink_number > 5:
+        print("Ошибка: номер напитка должен быть от 1 до 5")
+    elif quantity <= 0:
+        print("Ошибка: количество должно быть больше 0")
+    else:
+        if drink_number == 1:
+            drink_name = "Кофе"
+            price = coffee_price
+        elif drink_number == 2:
+            drink_name = "Чай"
+            price = tea_price
+        elif drink_number == 3:
+            drink_name = "Сок"
+            price = juice_price
+        elif drink_number == 4:
+            drink_name = "Вода"
+            price = water_price
         else:
-            portion = "порций"
+            drink_name = "Лимонад"
+            price = lemonade_price
 
+
+        total = price * quantity
+
+
+        discount = 0
+        discount_percent = 0
+
+
+        if discount_input.upper() == "STUDENT":
+            discount_percent = 20
+            discount = total * discount_percent / 100
+            final_total = total - discount
+        else:
+            final_total = total
+
+
+        if quantity == 1:
+            portion_word = "порция"
+        elif 2 <= quantity <= 4:
+            portion_word = "порции"
+        else:
+            portion_word = "порций"
+
+
+        print()
         print("=" * 30)
-        print("☕ КВИТАНЦИЯ КАФЕ")
+        print("        КВИТАНЦИЯ КАФЕ")
         print("=" * 30)
-        print(f"Товар: {drink_choice}")
-        print(f"Цена за порцию: {price_per_unit} рублей")
-        print(f"Количество: {amount} {portion}")
-        print(f"Сумма без скидки: {total_without_discount} рублей")
+        print(f"Товар: {drink_name}")
+        print(f"Цена за порцию: {price} руб")
+        print(f"Количество: {quantity} {portion_word}")
+        print(f"Сумма: {total} руб")
+        print()
+
 
         if discount > 0:
-            print(f"Скидка: {discount}%")
-            print(f"Сумма скидки: {discount_amount} рублей")
-            print(f"Итоговая сумма: {final_total:.2f} рублей")
-        else:
-            print(f"Итоговая сумма: {final_total:.2f} рублей")
+            print(f"Скидка '{discount_input}' ({discount_percent}%): {discount:.0f} руб")
 
         print("=" * 30)
-        print(f"💳 К ОПЛАТЕ: {final_total:.2f} рублей")
+        print(f"К ОПЛАТЕ: {final_total:.0f} руб")
         print("=" * 30)
-
-    except Exception as error:
-        print(f"❌ Произошла ошибка: {error}")
-cafe_menu()
+        print("Спасибо за заказ!")
