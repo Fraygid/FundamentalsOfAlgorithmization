@@ -7,7 +7,7 @@ if num < 2:
     print('Число должно быть больше 2')
 else:
     for i in range(num):
-        x = int(input(f'Введите число {i+1}: '))
+        x = int(input(f'Введите число №{i+1}: '))
         if x > first:
             second = first
             first = x
