@@ -1,4 +1,5 @@
 print('Введите 10 чисел последовательно через строку')
+
 all_even = True
 
 for _ in range(10):
@@ -7,6 +8,6 @@ for _ in range(10):
         all_even = False
 
 if all_even:
-    print('Да')
+    print('Все числа четные')
 else:
-    print('Нет')
+    print('Не все числа четные')
