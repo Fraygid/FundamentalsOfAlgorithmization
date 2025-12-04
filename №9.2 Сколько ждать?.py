@@ -1,4 +1,4 @@
-print('Введите имена участников (для завершения напишите "конец")')
+print('Введите имена участников')
 
 count = 0
 found_alexandra = False
@@ -6,9 +6,6 @@ between_count = 0
 
 while True:
     name = input('Введите имя участника: ')
-
-    if name == 'конец':
-        break
 
     if name == 'Александра':
         found_alexandra = True
